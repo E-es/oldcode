@@ -1,0 +1,12 @@
+D:\Projects\OAuthPractice\JQueryClient.Web\bin\JQueryClient.Web.dll.config
+D:\Projects\OAuthPractice\JQueryClient.Web\bin\JQueryClient.Web.dll
+D:\Projects\OAuthPractice\JQueryClient.Web\bin\JQueryClient.Web.pdb
+D:\Projects\OAuthPractice\JQueryClient.Web\obj\Debug\JQueryClient.Web.dll
+D:\Projects\OAuthPractice\JQueryClient.Web\obj\Debug\JQueryClient.Web.pdb
+D:\Projects\OAuthPractice\JQueryClient.Web\obj\Debug\JQueryClient.Web.csprojResolveAssemblyReference.cache
+D:\WebApi\JQueryClient.Web\bin\JQueryClient.Web.dll.config
+D:\WebApi\JQueryClient.Web\bin\JQueryClient.Web.dll
+D:\WebApi\JQueryClient.Web\bin\JQueryClient.Web.pdb
+D:\WebApi\JQueryClient.Web\obj\Debug\JQueryClient.Web.dll
+D:\WebApi\JQueryClient.Web\obj\Debug\JQueryClient.Web.pdb
+D:\WebApi\JQueryClient.Web\obj\Debug\JQueryClient.Web.csprojResolveAssemblyReference.cache

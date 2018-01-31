@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HR.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:HR.WebApi.CachingSwaggerProvider.GetControllerDesc">
+            <summary>
+            从API文档中读取控制器描述
+            </summary>
+            <returns>所有控制器描述</returns>
+        </member>
+        <member name="T:HR.WebApi.Controllers.EmployeesController">
+            <summary>
+            人员信息
+            </summary>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.IsUpdated(System.String,System.String)">
+            <summary>
+            查询是否有更新
+            </summary>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetEmployeeBaseAll">
+            <summary>
+            获取所有员工基础信息（全部同步使用）
+            </summary>
+            <returns>员工列表</returns>
+            <remarks>GET:Employees</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetEmployeeBaseAll(System.DateTime,System.DateTime)">
+            <summary>
+            根据最后更新时间获取基础信息（增量同步使用）
+            </summary>
+            <returns>员工列表</returns>
+            <remarks>GET: Employees/time</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetEmployeeBaseByAd(System.String)">
+            <summary>
+            根据账号获取员工基础信息
+            </summary>
+            <returns>员工列表</returns>
+            <remarks>GET: Employees/lir</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetAll">
+            <summary>
+            获取所有员工信息
+            </summary>
+            <returns>员工列表</returns>
+            <remarks>GET: Employees/detail/all</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetAll(System.DateTime,System.DateTime)">
+            <summary>
+            根据最后更新时间获取员工信息
+            </summary>
+            <returns>员工列表</returns>
+            <remarks>GET: Employees/detail/all</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetOneById(System.String)">
+            <summary>
+            根据主键获取员工
+            </summary>
+            <param name="value">Id</param>
+            <returns>员工信息</returns>
+            <remarks>GET:Employees/id/0094e1b9a39e4f76b91883c846823600</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetOneByAd(System.String)">
+            <summary>
+            根据AD获取员工
+            </summary>
+            <param name="value">AD</param>
+            <returns>员工信息</returns>
+            <remarks>GET:Employees/ad/value</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetListbyHid(System.String)">
+            <summary>
+            获取该部门下所有员工（不包含子部门）
+            </summary>
+            <param name="value">部门ID</param>
+            <returns>员工列表</returns>
+            <remarks>GET:Employees/hid/value</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetListAllbyHid(System.String)">
+            <summary>
+            获取该部门下所有员工（包含子部门）
+            </summary>
+            <param name="value">部门ID</param>
+            <returns>员工列表</returns>
+            <remarks>GET:Employees/hid/value/all</remarks>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetPostionsByAd(System.String)">
+            <summary>
+            根据AD账号查询岗位信息（多条记录）
+            </summary>
+            <param name="value">Ad账号</param>
+            <returns>岗位信息</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetPostionsById(System.String)">
+            <summary>
+            根据JobId查询岗位信息（单条记录）
+            </summary>
+            <param name="value">JobId</param>
+            <returns>岗位信息</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetPostionsAll">
+            <summary>
+            查询所有岗位信息
+            </summary>
+            <returns>岗位信息</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.GetExpandById(System.String)">
+            <summary>
+            根据Id查询拓展信息（单条记录）
+            </summary>
+            <param name="value">ADcount/EmployeeId</param>
+            <returns>拓展信息</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.Post(System.String)">
+            <summary>
+            NULL
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.Put(System.Int32,System.String)">
+            <summary>
+            NULL
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:HR.WebApi.Controllers.EmployeesController.Delete(System.Int32)">
+            <summary>
+            NULL
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:HR.WebApi.Controllers.OrgController">
+            <summary>
+            组织架构
+            </summary>
+        </member>
+        <member name="M:HR.WebApi.Controllers.OrgController.GetAll">
+            <summary>
+            获取所有组织
+            </summary>
+            <returns>组织列表</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.OrgController.GetAll(System.DateTime,System.DateTime)">
+            <summary>
+            根据最后更新时间获取组织
+            </summary>
+            <returns>组织列表</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.OrgController.GetOneById(System.String)">
+            <summary>
+            根据主键获取组织
+            </summary>
+            <param name="value">Id</param>
+            <returns>组织信息</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.OrgController.GetOneByHId(System.String)">
+            <summary>
+            根据Hid获取组织
+            </summary>
+            <param name="value">Hid</param>
+            <returns>组织信息</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.OrgController.GetChildsByFId(System.String)">
+            <summary>
+            获取该组织下属组织（不包含子部门）
+            </summary>
+            <param name="value">Hid</param>
+            <returns>组织列表</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.OrgController.GetChildsAllByFId(System.String)">
+            <summary>
+            获取该组织下属组织（包含子部门）
+            </summary>
+            <param name="value">Hid</param>
+            <returns>组织列表</returns>
+        </member>
+        <member name="M:HR.WebApi.Controllers.TestController.SayHello">
+            <summary>
+            接口测试
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HR.WebApi.Untils.ConvertToTimeSpanString(System.Object)">
+            <summary>
+            将数据库中timespan转换成十六进制字符串
+            </summary>
+            <param name="objTs">从数据库中获取的timespan值</param>      
+            <returns>timespan十六进制字符串</returns>
+        </member>
+    </members>
+</doc>

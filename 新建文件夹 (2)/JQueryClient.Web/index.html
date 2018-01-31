@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="AngularAuthApp">
+<head>
+    <meta name="keywords" content="jquery client oauth" />
+    <meta name="description" content="jquery client oauth" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Jquery client</title>
+    <link href="content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="content/css/site.css" rel="stylesheet" />
+    <link href="content/css/loading-bar.css" rel="stylesheet" />
+    <link href="content/css/font-awesome.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <script type="text/javascript" src="scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/jquery.cookie.js"></script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                Home
+            </div>
+            <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
+                
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="page-header text-center">
+                <h1>JQuery Authentication</h1>
+            </div>
+            <p>JQuery Application which uses OAuth Bearer Token for authentication. </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" id="loginPage">
+            <div class="col-md-4">
+                &nbsp;
+            </div>
+            <div class="col-md-4">
+                <h2 class="form-login-heading">Login</h2>
+                <input type="text" class="form-control" placeholder="Username" id="userName" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" id="password" required>
+
+                <button class="btn btn-md btn-info btn-block" id="login">Login</button>
+                <div id="message" class="alert alert-danger">
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="ordersPage">
+            <div class="col-md-2">
+                &nbsp;
+            </div>
+            <div class="col-md-8">
+                <table class="table table-striped table-bordered table-hover" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>HID</th>
+                            <th>Name</th>
+                            <th>FID</th>
+                            <th>Path</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-2">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted">Oauth jquery client</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+
+    (function($) {
+        $("#message").hide();
+
+        var apiServiceBaseUri = 'http://localhost/';
+        $('#login').click(function () {
+            var data = {
+                'grant_type': 'password',
+                'username': $('#userName').val(),
+                'password': $('#password').val()
+            };
+            $.ajax({
+                url: apiServiceBaseUri + 'token',
+                type: "POST",
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    $.cookie("token", data.access_token);
+                    $("#message").hide();
+                    $("#ordersPage").show();
+                    $("#loginPage").hide();
+                    getOrg();
+                    getIsUpdated();
+                },
+                error: function (xmlHttpRequest) {
+                    $("#message").html(xmlHttpRequest.responseJSON.error_description);
+                    $("#message").show();
+                }
+            });
+
+        });
+
+
+        var getIsUpdated = function () {
+
+            $.ajax({
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + $.cookie("token"));
+                },
+                url: apiServiceBaseUri + 'Employees/IsUpdated',
+                type: "GET",
+                data: { 'id': '5eb8b7365a654e1ea61f9b6976e3b077', 'timestamp': '0x000000000005339C' },
+                dataType: 'json',
+                success: function (data) {
+                    alert(JSON.stringify(data));
+                }
+            });
+
+        }
+        
+
+
+
+        var getOrg = function () {
+            $.ajax({
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer ' + $.cookie("token"));
+                },
+                url: apiServiceBaseUri + 'Org/all',
+                type: "GET",
+                dataType: 'json',
+                success: function (data) {
+                    showOrgTable(data);
+                }
+            });
+        }
+
+        var showOrgTable = function (orgs) {
+            $(orgs).each(function (index, org) {
+                var newRow = "<tr ><td>" + org.c_hid + "</td><td>" + org.c_name + "</td><td>" + org.c_superioR_HID +
+                    "</td><td>" + org.c_patH_CODE + "</td></tr>";
+                $("#ordersTable tr:last").after(newRow);
+            });
+           
+        }
+
+        if ($.cookie("token")) {
+            $("#ordersPage").show();
+            $("#loginPage").hide();
+            getOrg();
+        } else {
+            $("#ordersPage").hide();
+            $("#loginPage").show();
+        }
+    })(jQuery)
+   
+</script>
+
+
+</body>
+</html>
